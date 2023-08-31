@@ -35,7 +35,7 @@ function NewsListContainer() {
         padding: "1rem",
       }}
     >
-      <NewsList newsList={news} />
+      <NewsList newsList={news}  />
     </main>
   );
 }

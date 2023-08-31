@@ -2,10 +2,18 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import NewsDetailContainer from "./components/NewsDetailContainer";
 import NewsListContainer from "./components/NewsListContainer";
-import FavsProvider from "./context/favsContext";
+import FavsProvider, { FavsContext } from "./context/favsContext";
+import { createContext, useState } from "react";
+
+export const ThemeContext = createContext()
+
+console.log({ThemeContext})
 
 function App() {
+  const [isDarkMode,setIsDarkMode] = useState(false)
+
   return (
+    // <FavsContext.Provider value={[]} >
     <FavsProvider>
       <BrowserRouter>
         <Routes>
@@ -38,7 +46,8 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-    </FavsProvider>
+      </FavsProvider>
+    // </FavsContext.Provider>
   );
 }
 

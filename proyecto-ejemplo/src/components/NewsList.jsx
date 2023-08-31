@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import News from "./News";
 
-function NewsList({ newsList = [] }) {
+function NewsList({ newsList = []}) {
   return (
     <section
       style={{

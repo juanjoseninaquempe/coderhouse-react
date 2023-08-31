@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Card from "react-bootstrap/Card";
-import { useFavsContext } from "../context/favsContext";
+import { FavsContext, useFavsContext } from "../context/favsContext";
 import FavsToggle from "./FavsToggle";
 
 function NewsDetail({ createdAt, title, author }) {
-  const { decrementFavsQuantity, incrementFavsQuantity } = useFavsContext();
-  const [isFav, setIsFav] = useState(false);
+  // const { decrementFavsQuantity, incrementFavsQuantity } = useFavsContext();
+  // const [isFav, setIsFav] = useState(false);
+  const favsContext = useContext(FavsContext)
+  // console.log({favsContext})
 
   const handleClick = () => {
     if (isFav) {
