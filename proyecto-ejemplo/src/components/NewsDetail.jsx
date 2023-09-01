@@ -5,7 +5,7 @@ import FavsToggle from "./FavsToggle";
 
 function NewsDetail({ createdAt, title, author }) {
   // const { decrementFavsQuantity, incrementFavsQuantity } = useFavsContext();
-  // const [isFav, setIsFav] = useState(false);
+   const [isFav, setIsFav] = useState(false);
   const favsContext = useContext(FavsContext)
   // console.log({favsContext})
 
