@@ -1,15 +1,18 @@
 // import { Link } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import { BrowserRouter } from "react-router-dom";
+import NewsDetailContainer from "./components/NewsDetailContainer";
 import NewsListContainer from "./components/NewsListContainer";
+import Navbar from "./components/NavBar"
 
 // const categorias = ["Pantalones", "Remeras", "Buzos"];
 
 function App() {
   return (
-    <>
-      <NavBar />
-      <NewsListContainer greeting="Hola React!" />
-    </>
+   <>
+   <Navbar />
+   <NewsListContainer />
+   {/* <NewsDetailContainer newsId={37080634} /> */}
+   </>
   );
 
   /* return (

@@ -2,6 +2,7 @@ import reactLogo from "../assets/react.svg";
 
 import Button from "react-bootstrap/Button";
 import FavsWidget from "./FavsWidget";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -21,6 +22,7 @@ function NavBar() {
           gap: "2rem",
         }}
       >
+        <Link to="/">
         <span
           style={{
             display: "flex",
@@ -30,10 +32,11 @@ function NavBar() {
           <img alt="Brand" src={reactLogo} />
           <h3>Nerdticias!</h3>
         </span>
-        <Button>React</Button>
-        <Button>Angular</Button>
-        <Button>Vue</Button>
-        <Button>Svelte</Button>
+        </Link>
+        <Link><Button>React</Button></Link>
+        <Link><Button>Angular</Button></Link>
+        <Link><Button>Vue</Button></Link>
+        <Link><Button>Svelte</Button> </Link>
       </nav>
       <FavsWidget />
     </header>
