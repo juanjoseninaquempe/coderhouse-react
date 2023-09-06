@@ -2,8 +2,40 @@ import reactLogo from "../assets/react.svg";
 import Button from "react-bootstrap/Button";
 import FavsWidget from "./FavsWidget";
 import { Link } from "react-router-dom";
+import { addDoc, collection } from "firebase/firestore";
+import { firestore } from "../firebase/client";
 
 function NavBar() {
+
+  const handleClickEnviarDatos = ()  => {
+    const ordersRef = collection(firestore,"orders")
+
+    const data = {
+      buyer: {
+        email: "adri@caten.com",
+        name: "Adriano",
+        phone: "231342342354",
+      },
+      items: [
+        {
+        id: 1,
+        price: 100,
+        title: "Remera",
+        quantity: 1,
+        },
+        {
+          id: 2,
+          price: 55,
+          title: "Short",
+          quantity: 1,
+          }
+      ],
+      total: 155,
+    };
+
+    addDoc(ordersRef, data).then((newDocRef) => console.log(newDocRef))
+  } 
+
   return (
     <header
       style={{
@@ -45,6 +77,7 @@ function NavBar() {
           <Button>Svelte</Button>
         </Link>
       </nav>
+      <Button onClick={handleClickEnviarDatos}>Enviar datos</Button>
       <FavsWidget />
     </header>
   );

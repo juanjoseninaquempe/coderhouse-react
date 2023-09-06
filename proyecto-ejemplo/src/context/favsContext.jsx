@@ -4,6 +4,7 @@ export const FavsContext = createContext([]);
 
 function FavsProvider({ children }) {
   const [favsQuantity, setFavsQuantity] = useState(0);
+  const [order, setOrder] = useState({})
 
   const incrementFavsQuantity = () => {
     setFavsQuantity(favsQuantity + 1);
@@ -12,6 +13,27 @@ function FavsProvider({ children }) {
   const decrementFavsQuantity = () => {
     setFavsQuantity(favsQuantity - 1);
   };
+
+  // const purchaseCart = (cartInfo) => {
+  //   const auxOrder = {
+  //     buyer: {
+  //       email: "",
+  //       name: "",
+  //       phone: "",
+  //     },
+  //     items: [
+  //       {
+  //       id: 1,
+  //       price: 100,
+  //       title: "",
+  //       },
+  //     ],
+  //     total: 100,
+  //   }
+
+
+  // }
+
 
   return (
     <FavsContext.Provider
