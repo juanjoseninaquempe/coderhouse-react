@@ -1,16 +1,21 @@
 import {
   addDoc,
   collection,
-  doc,
-  updateDoc,
-  writeBatch,
+  // doc,
+  // updateDoc,
+  // writeBatch,
 } from "firebase/firestore";
-import { useState } from "react";
+// import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import reactLogo from "../assets/react.svg";
 import { firestore } from "../firebase/client";
 import FavsWidget from "./FavsWidget";
+
+function NavBar() {
+
+  const handleClickEnviarDatos = ()  => {
+    const ordersRef = collection(firestore,"orders")
 
 const data = {
   buyer: {
@@ -35,54 +40,52 @@ const data = {
   total: 155,
 };
 
-function NavBar() {
-  const [docId, setDocId] = useState("");
-  const [docsReferences, setDocsReferences] = useState([]);
+// function NavBar() {
+//   const [docId, setDocId] = useState("");
+//   const [docsReferences, setDocsReferences] = useState([]);
 
-  const handleClickEnviarDatos = () => {
-    const ordersRef = collection(firestore, "orders");
+//   const handleClickEnviarDatos = () => {
+//     const ordersRef = collection(firestore, "orders");
 
-    addDoc(ordersRef, data)
-      .then((newDocRef) => {
-        console.log(newDocRef);
-        setDocsReferences([...docsReferences, newDocRef]);
-        setDocId(newDocRef.id);
-      })
-      .catch((error) => console.error(error));
-  };
+    addDoc(ordersRef, data).then((newDocRef) => console.log(newDocRef))
+  //       setDocsReferences([...docsReferences, newDocRef]);
+  //       setDocId(newDocRef.id);
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
 
-  const handleClickModificarDatos = () => {
-    const docRef = doc(firestore, "orders", docId);
+  // const handleClickModificarDatos = () => {
+  //   const docRef = doc(firestore, "orders", docId);
 
-    data.items[0] = {
-      id: 1,
-      price: 48,
-      title: "Remera",
-      quantity: 1,
-    };
-    /* updateDoc(docRef, {
-      items: { id: 1, price: 48, title: "Remera", quantity: 1 },
-    }) */
+  //   data.items[0] = {
+  //     id: 1,
+  //     price: 48,
+  //     title: "Remera",
+  //     quantity: 1,
+  //   };
+  //   /* updateDoc(docRef, {
+  //     items: { id: 1, price: 48, title: "Remera", quantity: 1 },
+  //   }) */
 
-    updateDoc(docRef, {
-      items: [...data.items],
-    })
-      .then(() => console.log("Se modifico correctamente el documento"))
-      .catch((error) => console.error(error));
-  };
+  //   updateDoc(docRef, {
+  //     items: [...data.items],
+  //   })
+  //     .then(() => console.log("Se modifico correctamente el documento"))
+  //     .catch((error) => console.error(error));
+  // };
 
-  const handleCliclModificarBatch = () => {
-    const batch = writeBatch(firestore);
+  // const handleCliclModificarBatch = () => {
+  //   const batch = writeBatch(firestore);
 
-    batch.set(docsReferences[0], { newField: "Este es un campo nuevo" });
-    batch.update(docsReferences[1], { total: 3500 });
+  //   batch.set(docsReferences[0], { newField: "Este es un campo nuevo" });
+  //   batch.update(docsReferences[1], { total: 3500 });
 
-    batch
-      .commit()
-      .then(() => console.log("Se actualizo todo junto con un batch!"))
-      .catch((error) => console.error(error));
-    console.log({ docsReferences });
-  };
+  //   batch
+  //     .commit()
+  //     .then(() => console.log("Se actualizo todo junto con un batch!"))
+  //     .catch((error) => console.error(error));
+  //   console.log({ docsReferences });
+   };
 
   return (
     <header
@@ -126,8 +129,8 @@ function NavBar() {
         </Link>
       </nav>
       <Button onClick={handleClickEnviarDatos}>Enviar datos</Button>
-      <Button onClick={handleClickModificarDatos}>Modificar datos</Button>
-      <Button onClick={handleCliclModificarBatch}>Modificar con batch</Button>
+      {/* <Button onClick={handleClickModificarDatos}>Modificar datos</Button>
+      <Button onClick={handleCliclModificarBatch}>Modificar con batch</Button> */}
       <FavsWidget />
     </header>
   );
